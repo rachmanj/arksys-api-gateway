@@ -5,17 +5,15 @@ const api = apiAdapter(URL_SERVICE_PAYREQ);
 
 module.exports = async (req, res) => {
   try {
-    const id = req.params.id;
-    const buc = await api.get(`/bucs/${id}`);
-    return res.json(buc.data);
+    const payreqs = await api.get('/payreqs');
+    return res.json(payreqs.data);
   } catch (error) {
-    console.log(error);
     if (error.code === 'ECONNREFUSED') {
       return res
         .status(500)
         .json({ status: 'error', message: 'service unavailable' });
     }
-    const { status, data } = error.response;
-    return res.status(status).json(data);
+    // const { data } = error.response;
+    return res.status(404).json({ message: 'service unavailable' });
   }
 };

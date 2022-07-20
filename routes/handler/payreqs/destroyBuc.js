@@ -6,7 +6,7 @@ const api = apiAdapter(URL_SERVICE_PAYREQ);
 module.exports = async (req, res) => {
   try {
     const id = req.params.id;
-    const buc = await api.get(`/bucs/${id}`);
+    const buc = await api.delete(`/bucs/${id}`);
     return res.json(buc.data);
   } catch (error) {
     console.log(error);

@@ -6,8 +6,8 @@ const api = apiAdapter(URL_SERVICE_PAYREQ);
 module.exports = async (req, res) => {
   try {
     const id = req.params.id;
-    const buc = await api.get(`/bucs/${id}`);
-    return res.json(buc.data);
+    const payreq = await api.put(`/payreqs/${id}`, req.body);
+    return res.json(payreq.data);
   } catch (error) {
     console.log(error);
     if (error.code === 'ECONNREFUSED') {
