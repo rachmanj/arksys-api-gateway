@@ -6,6 +6,7 @@ const api = apiAdapter(URL_SERVICE_PAYREQ);
 module.exports = async (req, res) => {
   try {
     const bucs = await api.get('/bucs');
+
     return res.json(bucs.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
@@ -14,6 +15,6 @@ module.exports = async (req, res) => {
         .json({ status: 'error', message: 'service unavailable' });
     }
     // const { data } = error.response;
-    return res.status(404).json({ message: 'service unavailable' });
+    return res.status(404).json({ message: error.message });
   }
 };
