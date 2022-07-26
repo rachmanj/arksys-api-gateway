@@ -10,10 +10,10 @@ router.post('/bucs', payreqsHandler.createBuc);
 router.put('/bucs/:id', payreqsHandler.updateBuc);
 router.delete('/bucs/:id', payreqsHandler.destroyBuc);
 
-// router.post('/', payreqsHandler.createPayreq);
-// router.get('/', payreqsHandler.getPayreqs);
-// router.get('/:id', payreqsHandler.getPayreqById);
-// router.put('/:id', payreqsHandler.updatePayreq);
-// router.delete('/:id', payreqsHandler.destroyPayreq);
+router.post('/payreqs', payreqsHandler.createPayreq);
+router.get('/payreqs', payreqsHandler.getPayreqs);
+router.get('/payreqs/:id', payreqsHandler.getPayreqById);
+router.put('/payreqs/:id', payreqsHandler.updatePayreq);
+router.delete('/payreqs/:id', payreqsHandler.destroyPayreq);
 
 module.exports = router;
